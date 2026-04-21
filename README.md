@@ -10,7 +10,7 @@ Phase 1 website and booking-system foundation for **34 On Saturn**.
 - Event enquiry workflow with quote-ready references
 - Payment tracking records for card or EFT selections
 - Admin portal for managing bookings, reservations, event enquiries and payment statuses
-- SQLite + Prisma data model for customers, rooms, bookings and payments
+- PostgreSQL + Prisma data model for customers, rooms, bookings and payments
 - Mobile-responsive Next.js frontend
 
 ## Tech stack
@@ -19,7 +19,7 @@ Phase 1 website and booking-system foundation for **34 On Saturn**.
 - TypeScript
 - Tailwind CSS 4
 - Prisma ORM
-- SQLite for local development
+- PostgreSQL
 
 ## Local setup
 
@@ -36,11 +36,32 @@ Phase 1 website and booking-system foundation for **34 On Saturn**.
 7. Start the site:
    - `npm run dev`
 
+## AWS Amplify deployment
+
+1. Connect the repository to an Amplify app and keep the project root as `/`.
+2. Use the included `amplify.yml` (Amplify will auto-detect it in the repository root).
+3. Add environment variables in Amplify for each deployed branch:
+   - `DATABASE_URL`
+   - `NEXT_PUBLIC_SITE_URL`
+   - `ENABLE_CARD_AUTOCONFIRM`
+   - `ADMIN_CONTACT_EMAIL`
+   - `ADMIN_CONTACT_PHONE`
+   - `ADMIN_BASIC_AUTH_USER`
+   - `ADMIN_BASIC_AUTH_PASSWORD`
+4. Keep secrets in Amplify-managed environment variables (or AWS Secrets Manager), not in git.
+5. Run Prisma migrations against production before promoting a release:
+   - `npx prisma migrate deploy`
+
+Notes:
+- `DATABASE_URL_READ_REPLICA` is optional and currently reserved for future read-scaling use.
+- Prisma Client is generated during Amplify pre-build.
+- `/admin` is protected via HTTP Basic Auth using `ADMIN_BASIC_AUTH_USER` and `ADMIN_BASIC_AUTH_PASSWORD`.
+
 ## Important notes
 
 - `ENABLE_CARD_AUTOCONFIRM=false` keeps card payments in a pending state until a live payment gateway is connected.
 - To support real online card processing, connect a production-ready gateway such as Stripe or Peach Payments and replace the demo payment status behavior in the server actions.
-- Admin authentication is not yet enforced. Add authentication before production deployment.
+- Admin authentication is enforced on `/admin` when `ADMIN_BASIC_AUTH_USER` and `ADMIN_BASIC_AUTH_PASSWORD` are configured.
 - HTTPS, daily backups and deployment hardening should be configured at hosting level.
 
 ## Data captured
