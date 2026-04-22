@@ -20,6 +20,25 @@ a {
   text-decoration: none;
 }
 
+a,
+button {
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease, transform 120ms ease;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(252, 211, 77, 0.85);
+  outline-offset: 2px;
+}
+
 input,
 select,
 textarea {

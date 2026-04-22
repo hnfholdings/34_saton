@@ -1,7 +1,9 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 
 export async function getRoomsSafe() {
   try {
+    const db = getDb();
+
     return await db.room.findMany({
       where: { isActive: true },
       orderBy: { rate: "asc" },
@@ -13,6 +15,8 @@ export async function getRoomsSafe() {
 
 export async function getAdminDataSafe() {
   try {
+    const db = getDb();
+
     const [accommodationBookings, diningReservations, eventEnquiries, payments, customers] =
       await Promise.all([
         db.accommodationBooking.findMany({

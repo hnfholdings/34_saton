@@ -10,7 +10,7 @@ import {
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { calculateStayTotal, getAvailableRooms } from "@/lib/availability";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { createReference } from "@/lib/utils";
 
 export type ActionState = {
@@ -57,6 +57,8 @@ async function findOrCreateCustomer(input: {
   phone: string;
   notes?: string;
 }) {
+  const db = getDb();
+
   const existing = await db.customer.findFirst({
     where: {
       email: input.email,
@@ -83,6 +85,8 @@ export async function submitAccommodationBooking(
   _prevState: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
+  const db = getDb();
+
   const parsed = accommodationSchema.safeParse({
     fullName: formData.get("fullName"),
     email: formData.get("email"),
@@ -205,6 +209,8 @@ export async function submitDiningReservation(
   _prevState: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
+  const db = getDb();
+
   const parsed = diningSchema.safeParse({
     fullName: formData.get("fullName"),
     email: formData.get("email"),
@@ -264,6 +270,8 @@ export async function submitEventEnquiry(
   _prevState: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
+  const db = getDb();
+
   const guestCountValue = formData.get("guestCount");
   const parsed = eventSchema.safeParse({
     fullName: formData.get("fullName"),
@@ -313,6 +321,8 @@ export async function submitEventEnquiry(
 }
 
 export async function setAccommodationBookingStatus(formData: FormData) {
+  const db = getDb();
+
   const bookingId = String(formData.get("bookingId"));
   const status = formData.get("status") as BookingStatus;
 
@@ -325,6 +335,8 @@ export async function setAccommodationBookingStatus(formData: FormData) {
 }
 
 export async function setDiningReservationStatus(formData: FormData) {
+  const db = getDb();
+
   const reservationId = String(formData.get("reservationId"));
   const status = formData.get("status") as BookingStatus;
 
@@ -337,6 +349,8 @@ export async function setDiningReservationStatus(formData: FormData) {
 }
 
 export async function setEventStatus(formData: FormData) {
+  const db = getDb();
+
   const enquiryId = String(formData.get("enquiryId"));
   const status = formData.get("status") as EventStatus;
 
@@ -349,6 +363,8 @@ export async function setEventStatus(formData: FormData) {
 }
 
 export async function setPaymentStatus(formData: FormData) {
+  const db = getDb();
+
   const paymentId = String(formData.get("paymentId"));
   const status = formData.get("status") as PaymentStatus;
 

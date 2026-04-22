@@ -103,7 +103,7 @@ export default async function AdminPage() {
                   <form action={setAccommodationBookingStatus} className="mt-4 flex flex-wrap items-center gap-3">
                     <input type="hidden" name="bookingId" value={booking.id} />
                     <StatusSelect name="status" value={booking.bookingStatus} options={bookingStatuses} />
-                    <button className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white">
+                    <button type="submit" className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white hover:border-amber-300 hover:text-amber-200">
                       Update booking
                     </button>
                   </form>
@@ -133,7 +133,7 @@ export default async function AdminPage() {
                   <form action={setPaymentStatus} className="mt-4 flex flex-wrap items-center gap-3">
                     <input type="hidden" name="paymentId" value={payment.id} />
                     <StatusSelect name="status" value={payment.status} options={paymentStatuses} />
-                    <button className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white">
+                    <button type="submit" className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white hover:border-amber-300 hover:text-amber-200">
                       Update payment
                     </button>
                   </form>
@@ -160,7 +160,7 @@ export default async function AdminPage() {
                   <form action={setDiningReservationStatus} className="mt-4 flex flex-wrap items-center gap-3">
                     <input type="hidden" name="reservationId" value={reservation.id} />
                     <StatusSelect name="status" value={reservation.status} options={bookingStatuses} />
-                    <button className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white">
+                    <button type="submit" className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white hover:border-amber-300 hover:text-amber-200">
                       Update reservation
                     </button>
                   </form>
@@ -188,7 +188,7 @@ export default async function AdminPage() {
                   <form action={setEventStatus} className="mt-4 flex flex-wrap items-center gap-3">
                     <input type="hidden" name="enquiryId" value={enquiry.id} />
                     <StatusSelect name="status" value={enquiry.status} options={eventStatuses} />
-                    <button className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white">
+                    <button type="submit" className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white hover:border-amber-300 hover:text-amber-200">
                       Update event
                     </button>
                   </form>

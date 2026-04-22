@@ -11,8 +11,16 @@ export function SiteFooter() {
         </div>
         <div className="text-sm text-slate-300">
           <p>{siteConfig.location}</p>
-          <p>{siteConfig.phone}</p>
-          <p>{siteConfig.email}</p>
+          <p>
+            <a href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`} className="hover:text-amber-300">
+              {siteConfig.phone}
+            </a>
+          </p>
+          <p>
+            <a href={`mailto:${siteConfig.email}`} className="hover:text-amber-300">
+              {siteConfig.email}
+            </a>
+          </p>
         </div>
         <div className="flex flex-col gap-2 text-sm text-slate-300">
           <Link href="/stay/book" className="hover:text-amber-300">
