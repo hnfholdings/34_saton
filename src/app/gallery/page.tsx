@@ -1,14 +1,19 @@
 import { SectionHeading } from "@/components/section-heading";
 import { galleryCaptions } from "@/lib/content";
+import Link from "next/link";
 
 export default function GalleryPage() {
   return (
     <section className="mx-auto max-w-7xl space-y-12 px-6 py-20">
       <SectionHeading
         eyebrow="Gallery"
-        title="A visual placeholder gallery ready for real venue imagery"
-        description="The gallery page is included in the public information architecture and can be updated with real photography as content assets become available."
+        title="See the Magic"
+        description="Immerse yourself in the beauty of 34 On Saturn. Browse our gallery to experience the lush garden, stylish rooms, inviting dining areas, and vibrant event setups."
       />
+
+      <p className="max-w-4xl text-slate-300">
+        From golden sunsets over the hills to candlelit tables and joyful celebrations, every corner tells a story.
+      </p>
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {galleryCaptions.map((caption, index) => (
@@ -21,6 +26,10 @@ export default function GalleryPage() {
           </div>
         ))}
       </div>
+
+      <Link href="/gallery" className="inline-flex items-center rounded-full bg-amber-300 px-6 py-3 font-semibold text-slate-950 transition hover:bg-amber-200">
+        Browse Gallery
+      </Link>
     </section>
   );
 }

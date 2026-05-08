@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { getRoomsSafe } from "@/lib/queries";
+import { roomAmenities } from "@/lib/content";
 import { formatCurrency } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -12,9 +13,20 @@ export default async function StayPage() {
     <section className="mx-auto max-w-7xl space-y-12 px-6 py-20">
       <SectionHeading
         eyebrow="Stay"
-        title="Accommodation with real availability control"
-        description="Guests can submit date-based bookings with room selection, price visibility and payment tracking, while the admin side retains full oversight of every stay request."
+        title="Stay in Comfort and Style"
+        description="At 34 On Saturn, every room is designed to feel like a home away from home. Our thoughtfully appointed ensuite rooms combine modern amenities with warm, inviting decor for business travellers, couples, families, and leisure guests."
       />
+
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+        <h3 className="text-xl font-semibold text-white">Room Amenities</h3>
+        <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {roomAmenities.map((amenity) => (
+            <div key={amenity} className="rounded-2xl border border-white/10 bg-slate-950/60 p-4 text-slate-300">
+              {amenity}
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="grid gap-6 lg:grid-cols-3">
         {rooms.length > 0 ? (
@@ -38,9 +50,17 @@ export default async function StayPage() {
         )}
       </div>
 
-      <Link href="/stay/book" className="inline-flex rounded-full bg-amber-300 px-6 py-3 font-semibold text-slate-950 transition hover:bg-amber-200">
-        Continue to booking
-      </Link>
+      <div className="flex flex-wrap gap-3">
+        <Link href="/stay/book" className="inline-flex rounded-full bg-amber-300 px-6 py-3 font-semibold text-slate-950 transition hover:bg-amber-200">
+          Check Availability
+        </Link>
+        <Link href="#" className="inline-flex rounded-full border border-white/15 px-6 py-3 font-semibold text-white transition hover:border-amber-300 hover:text-amber-200">
+          View Special Offers
+        </Link>
+        <Link href="/stay" className="inline-flex rounded-full border border-white/15 px-6 py-3 font-semibold text-white transition hover:border-amber-300 hover:text-amber-200">
+          See All Rooms
+        </Link>
+      </div>
     </section>
   );
 }

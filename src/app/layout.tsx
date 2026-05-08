@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "34 On Saturn | Venue, Dining & Accommodation",
-  description: "Modern website, bookings and admin management system for 34 On Saturn in Mbombela.",
+  title: "34 On Saturn | Guesthouse, Restaurant and Events Venue",
+  description: "Stay, dine and celebrate at 34 On Saturn in Mbombela with stylish accommodation, al-fresco dining, and versatile event spaces.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

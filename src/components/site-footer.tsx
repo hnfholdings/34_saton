@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-8 px-6 py-10 md:grid-cols-3">
         <div>
           <p className="text-lg font-semibold text-white">34 On Saturn</p>
-          <p className="mt-2 text-sm text-slate-300">Functions venue, dining and accommodation in Mbombela.</p>
+          <p className="mt-2 text-sm text-slate-300">Guesthouse, restaurant, and events venue in Mbombela.</p>
         </div>
         <div className="text-sm text-slate-300">
           <p>{siteConfig.location}</p>
@@ -24,10 +24,13 @@ export function SiteFooter() {
         </div>
         <div className="flex flex-col gap-2 text-sm text-slate-300">
           <Link href="/stay/book" className="hover:text-amber-300">
-            Book accommodation
+            Book Your Stay
+          </Link>
+          <Link href="/dine" className="hover:text-amber-300">
+            Reserve a Table
           </Link>
           <Link href="/events" className="hover:text-amber-300">
-            Event enquiry
+            Plan Your Event
           </Link>
           <Link href="/policies" className="hover:text-amber-300">
             Policies & POPIA
